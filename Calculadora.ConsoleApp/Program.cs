@@ -37,44 +37,65 @@ while (deveContinuar == true)
 
     Console.WriteLine();
 
-    Console.WriteLine("O primeiro número digitado foi: " + strPrimeiroNumero);
-    Console.WriteLine("O segundo número digitado foi: " + strSegundoNumero);
+    
+    // decimal
+    decimal primeiroNumero = Convert.ToDecimal(strPrimeiroNumero);
+    decimal segundoNumero = Convert.ToDecimal(strSegundoNumero);
 
-    Console.WriteLine();
+    decimal resultado = 0;
 
-    // int = numero inteiro
-    int primeiroNumero = Convert.ToInt32(strPrimeiroNumero);
-    int segundoNumero = Convert.ToInt32(strSegundoNumero);
-
-    int resultado;
-
-    if (operacaoSelecionada == "1")
+    switch (operacaoSelecionada)
     {
-        resultado = primeiroNumero + segundoNumero;
-    }
+        case "1":
+            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
+            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
 
-    else if (operacaoSelecionada == "2")
-    {
-        resultado = primeiroNumero - segundoNumero;
-    }
+            Console.WriteLine();
+            resultado = resultado = primeiroNumero + segundoNumero;
+            break;
 
-    else if (operacaoSelecionada == "3")
-    {
-        resultado = primeiroNumero * segundoNumero;
-    }
+        case "2":
+            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
+            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
 
-    else
-    {
-        if (segundoNumero == 0)
-        {
-        Console.WriteLine("Não é possível fazer uma divisão por zero. Tente novamente.");  
+            Console.WriteLine();
+            resultado = resultado = primeiroNumero - segundoNumero;
+            break;
 
-        return; 
+        case "3":
+            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
+            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
 
-        }
-        resultado = primeiroNumero / segundoNumero;
+            Console.WriteLine();
+            resultado = resultado = primeiroNumero * segundoNumero;
+            break;
+
+        case "4":
+            if (segundoNumero == 0)
+            {                
+                Console.WriteLine("Não é possível fazer uma divisão por zero. Tente novamente.");
+                return; 
+            } 
+
+            else
+            {
+                Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
+                Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
+
+                Console.WriteLine();
+                resultado = primeiroNumero / segundoNumero;
+                break;
+            }
         
-    }
+        default:
+        Console.WriteLine("Opção inválida!");
+		Console.ReadLine();
+        return;
+
+    
+
+    }    
+    
 
     Console.WriteLine("A soma dos dois números resulta em: " + resultado);
 
