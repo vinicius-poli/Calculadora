@@ -17,7 +17,7 @@ while (deveContinuar == true)
     Console.WriteLine("S - Sair");
 
     Console.Write("Selecione uma opção válida: ");
-    string operacaoSelecionada = Console.ReadLine().ToUpper();
+    string? operacaoSelecionada = Console.ReadLine().ToUpper();
 
     if (operacaoSelecionada == "S")
     {
@@ -39,12 +39,12 @@ while (deveContinuar == true)
 
 
     Console.Write("Digite o primeiro número: ");
-    string strPrimeiroNumero = Console.ReadLine();
+    string? strPrimeiroNumero = Console.ReadLine();
 
     Console.WriteLine();
 
     Console.Write("Digite o segundo número: ");
-    string strSegundoNumero = Console.ReadLine();
+    string? strSegundoNumero = Console.ReadLine();
 
     Console.WriteLine();
 
@@ -52,6 +52,19 @@ while (deveContinuar == true)
     Console.WriteLine("O segundo número digitado foi: " + strSegundoNumero);
 
     Console.WriteLine();
+
+    bool primeiroNumeroVazio = string.IsNullOrEmpty(strPrimeiroNumero);
+    bool segundoNumeroVazio = string.IsNullOrEmpty(strSegundoNumero);
+
+    if(string.IsNullOrEmpty(strPrimeiroNumero))
+
+    if (primeiroNumeroVazio || segundoNumeroVazio)
+    {
+        Console.WriteLine("Digite um número válido!");
+        Console.ReadLine();
+        
+        continue;
+    }
 
     // decimal
     decimal primeiroNumero = Convert.ToDecimal(strPrimeiroNumero);
