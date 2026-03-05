@@ -17,13 +17,24 @@ while (deveContinuar == true)
     Console.WriteLine("S - Sair");
 
     Console.Write("Selecione uma opção válida: ");
-    string operacaoSelecionada = Console.ReadLine();
+    string operacaoSelecionada = Console.ReadLine().ToUpper();
 
     if (operacaoSelecionada == "S")
     {
         deveContinuar = false;
 
         continue; // obriga o loop a voltar ao começo (começo do while)
+    }
+
+    else if (
+        operacaoSelecionada != "1" && 
+        operacaoSelecionada != "2" &&
+        operacaoSelecionada != "3" && 
+        operacaoSelecionada != "4")
+    {
+        Console.WriteLine("Opção Inválida");
+        Console.ReadLine();
+        continue;
     }
 
 
@@ -37,7 +48,11 @@ while (deveContinuar == true)
 
     Console.WriteLine();
 
-    
+    Console.WriteLine("O primeiro número digitado foi: " + strPrimeiroNumero);
+    Console.WriteLine("O segundo número digitado foi: " + strSegundoNumero);
+
+    Console.WriteLine();
+
     // decimal
     decimal primeiroNumero = Convert.ToDecimal(strPrimeiroNumero);
     decimal segundoNumero = Convert.ToDecimal(strSegundoNumero);
@@ -46,27 +61,18 @@ while (deveContinuar == true)
 
     switch (operacaoSelecionada)
     {
-        case "1":
-            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
-            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
-
-            Console.WriteLine();
+        case "1":            
+            
             resultado = resultado = primeiroNumero + segundoNumero;
             break;
 
         case "2":
-            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
-            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
-
-            Console.WriteLine();
+            
             resultado = resultado = primeiroNumero - segundoNumero;
             break;
 
         case "3":
-            Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
-            Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
-
-            Console.WriteLine();
+            
             resultado = resultado = primeiroNumero * segundoNumero;
             break;
 
@@ -79,10 +85,6 @@ while (deveContinuar == true)
 
             else
             {
-                Console.WriteLine("O primeiro número digitado foi: " + primeiroNumero);
-                Console.WriteLine("O segundo número digitado foi: " + segundoNumero);
-
-                Console.WriteLine();
                 resultado = primeiroNumero / segundoNumero;
                 break;
             }
@@ -90,14 +92,10 @@ while (deveContinuar == true)
         default:
         Console.WriteLine("Opção inválida!");
 		Console.ReadLine();
-        return;
-
-    
-
+        return; 
     }    
     
-
-    Console.WriteLine("A soma dos dois números resulta em: " + resultado);
+    Console.WriteLine("Resultado: " + resultado);
 
     Console.ReadLine();
 }
