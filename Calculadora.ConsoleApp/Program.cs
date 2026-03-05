@@ -1,4 +1,5 @@
-﻿
+﻿string[] historicoOperacoes = new string[100];
+int totalOperacoes = 0;
 
 bool  deveContinuar = true;
 
@@ -15,6 +16,7 @@ while (deveContinuar == true)
     Console.WriteLine("3 - Multiplicação");
     Console.WriteLine("4 - Divisão");
     Console.WriteLine("5 - Tabuada");
+    Console.WriteLine("6 - Histórico");
     Console.WriteLine("S - Sair");
 
     Console.Write("Selecione uma opção válida: ");
@@ -32,7 +34,8 @@ while (deveContinuar == true)
         operacaoSelecionada != "2" &&
         operacaoSelecionada != "3" && 
         operacaoSelecionada != "4" &&
-        operacaoSelecionada != "5")
+        operacaoSelecionada != "5" &&
+        operacaoSelecionada != "6")
     {
         Console.WriteLine("Opção Inválida");
         Console.ReadLine();
@@ -40,7 +43,7 @@ while (deveContinuar == true)
     }
 
     //Logica da Tabuada
-    if (operacaoSelecionada == "5")
+   else  if (operacaoSelecionada == "5")
     {
         Console.Write("Digite o número que deseja gerar a tabuada: ");
 
@@ -57,6 +60,28 @@ while (deveContinuar == true)
 
         Console.ReadLine();
 
+        continue;
+    }
+
+    else if (operacaoSelecionada == "6")
+    {
+        Console.WriteLine("--------------------------------");
+        Console.WriteLine("Histórico de Operações");
+        Console.WriteLine("--------------------------------");
+
+        if (totalOperacoes == 0)
+        {
+            Console.WriteLine("Nenhuma operação registrada ainda.");
+        }
+        else
+        {
+            for (int i = 0; i < totalOperacoes; i++)
+            {
+                Console.WriteLine(historicoOperacoes[i]);
+            }
+        }
+
+        Console.ReadLine();
         continue;
     }
     
@@ -95,22 +120,26 @@ while (deveContinuar == true)
     decimal segundoNumero = Convert.ToDecimal(strSegundoNumero);
 
     decimal resultado = 0;
+    string operacaoTexto = "";
 
     switch (operacaoSelecionada)
     {
         case "1":            
             
             resultado = resultado = primeiroNumero + segundoNumero;
+            operacaoTexto = primeiroNumero + " + " + segundoNumero + " = " + resultado;
             break;
 
         case "2":
             
             resultado = resultado = primeiroNumero - segundoNumero;
+            operacaoTexto = primeiroNumero + " - " + segundoNumero + " = " + resultado;
             break;
 
         case "3":
             
             resultado = resultado = primeiroNumero * segundoNumero;
+            operacaoTexto = primeiroNumero + " x " + segundoNumero + " = " + resultado;
             break;
 
         case "4":
@@ -123,6 +152,7 @@ while (deveContinuar == true)
             else
             {
                 resultado = primeiroNumero / segundoNumero;
+                operacaoTexto = primeiroNumero + " / " + segundoNumero + " = " + resultado;
                 break;
             }
         
@@ -130,7 +160,15 @@ while (deveContinuar == true)
         Console.WriteLine("Opção inválida!");
 		Console.ReadLine();
         continue; 
-    }    
+    }   
+
+    //Salvar no histórico
+
+    if (totalOperacoes < historicoOperacoes.Length)
+    {
+        historicoOperacoes[totalOperacoes] = operacaoTexto;
+        totalOperacoes++;
+    } 
     
     Console.WriteLine("Resultado: " + resultado);
 
