@@ -14,6 +14,7 @@ while (deveContinuar == true)
     Console.WriteLine("2 - Subtração");
     Console.WriteLine("3 - Multiplicação");
     Console.WriteLine("4 - Divisão");
+    Console.WriteLine("5 - Tabuada");
     Console.WriteLine("S - Sair");
 
     Console.Write("Selecione uma opção válida: ");
@@ -30,13 +31,36 @@ while (deveContinuar == true)
         operacaoSelecionada != "1" && 
         operacaoSelecionada != "2" &&
         operacaoSelecionada != "3" && 
-        operacaoSelecionada != "4")
+        operacaoSelecionada != "4" &&
+        operacaoSelecionada != "5")
     {
         Console.WriteLine("Opção Inválida");
         Console.ReadLine();
         continue;
     }
 
+    //Logica da Tabuada
+    if (operacaoSelecionada == "5")
+    {
+        Console.Write("Digite o número que deseja gerar a tabuada: ");
+
+        int numeroTabuada = Convert.ToInt32(Console.ReadLine());
+
+        for (int contador = 1; contador <= 10; contador += 1)
+        {
+            int resultadoTabuada = numeroTabuada * contador;
+
+            string operacaoTabuada = numeroTabuada + " x " + contador + " = " + resultadoTabuada;
+            
+            Console.WriteLine(operacaoTabuada);
+        }
+
+        Console.ReadLine();
+
+        continue;
+    }
+    
+    //Logica da operações de cálculo
 
     Console.Write("Digite o primeiro número: ");
     string? strPrimeiroNumero = Console.ReadLine();
@@ -105,7 +129,7 @@ while (deveContinuar == true)
         default:
         Console.WriteLine("Opção inválida!");
 		Console.ReadLine();
-        return; 
+        continue; 
     }    
     
     Console.WriteLine("Resultado: " + resultado);
