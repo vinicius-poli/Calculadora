@@ -5,7 +5,7 @@ bool  deveContinuar = true;
 
 while (deveContinuar == true)
 {
-    //Concole.Clear();
+    Console.Clear();
 
     Console.WriteLine("-------------------");
     Console.WriteLine("Calculadora 2026");
